@@ -25,7 +25,8 @@ class BanditGame(object):
 	def __init__(self):
 		global setting, money, welcome_message
 		random.seed()
-		self._setting = random.shuffle(setting)
+		self._setting = setting
+		random.shuffle(self._setting)
 		self._size = len(setting)
 		self._money = money
 		self._celling = 200
@@ -51,8 +52,8 @@ class BanditGame(object):
 		if arm in range(1, self._size+1):
 			print "You pulled arm {0}".format(arm)
 			value = random.random()
-			win = True if value < setting[arm-1][0] else False
-			gain = setting[arm-1][1] if win else -1
+			win = True if value < self._setting[arm-1][0] else False
+			gain = self._setting[arm-1][1] if win else -1
 			self._money += gain
 			if win:
 				print "Contratulations! You win ${0}. Your current balence: {1}\n".format(gain, self._money)
