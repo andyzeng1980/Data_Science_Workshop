@@ -56,28 +56,28 @@ class BanditGame(object):
 			gain = self._setting[arm-1][1] if win else -1
 			self._money += gain
 			if win:
-				print "Contratulations! You win ${0}. Your current balence: {1}\n".format(gain, self._money)
+				print "Contratulations! You win ${0}. Your current balance: {1}\n".format(gain, self._money)
 			else:
-				print "Oops You lose... Your current balence: {}\n".format(self._money)
+				print "Oops You lose... Your current balance: {}\n".format(self._money)
 			if self._money <= 0:
 				print "GAME OVER! You lost all your money..."
 			if self._money > self._celling:
 				print "Congratulations! You earned too much money. OMG! \nThe Casino has finally gone bankrupt. \nGAME OVER..."
 			return True, gain, self._money
 		else:
-			print "Kidding me??? There is no arm {0} exists.\n".format(arm)
+			print "Kidding me??? Arm {0} does not exist.\n".format(arm)
 			return False, 0, self._money
 
 	def continuous_play(self):
 		while True:
-			arm = raw_input("Which arm do you like to pull (1-{0} to choose an arm, or exit with 0)?".format(self._size))
+			arm = raw_input("Which arm would you like to pull (1-{0} to choose an arm, or exit with 0)?".format(self._size))
 			if arm.strip() == '0':
 				print 'Thanks for playing. See you next time ~'
 				break
 			try:
 				arm = int(arm.strip())
 			except:
-				print "Kidding me??? There is no arm {} exists.\n".format(arm)
+				print "Kidding me??? Arm {} does not exist.\n".format(arm)
 				continue
 			self.play(arm)
 
